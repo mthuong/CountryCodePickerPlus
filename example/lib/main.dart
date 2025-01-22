@@ -83,13 +83,27 @@ class _ExampleState extends State<Example> {
                 textAlign: TextAlign.start,
                 textAlignVertical: TextAlignVertical.center,
                 decoration: InputDecoration(
-                  prefixIcon: CountryCodePicker(
-                    alignLeft: true,
-                    // hideMainText: true,
-                    mode: CountryCodePickerMode.dropdown,
-                    onChanged: (country) {
-                      _printCountryCode(country);
-                    },
+                  prefixIcon: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      CountryCodePicker(
+                        alignLeft: true,
+                        // hideMainText: true,
+                        mode: CountryCodePickerMode.dropdown,
+                        onChanged: (country) {
+                          _printCountryCode(country);
+                        },
+                        initialSelection: 'GB',
+                      ),
+                      Container(
+                        width: 1,
+                        height: 48,
+                        color: Colors.grey,
+                      ),
+                      const SizedBox(
+                        width: 8,
+                      ),
+                    ],
                   ),
                   hintText: 'Enter phone number',
                 ),
