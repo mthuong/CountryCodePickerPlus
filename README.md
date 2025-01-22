@@ -40,7 +40,7 @@ customization options:
 ## Mode Property
 
 | **Mode**      | **Description**                                                                       |
-|---------------|---------------------------------------------------------------------------------------|
+| ------------- | ------------------------------------------------------------------------------------- |
 | `dialog`      | Shows the country picker in a modal dialog.                                           |
 | `dropdown`    | Shows the country picker as a dropdown menu.                                          |
 | `bottomSheet` | Shows the country picker in a bottom sheet, sliding up from the bottom of the screen. |
@@ -48,14 +48,18 @@ customization options:
 This table provides a concise description of the different modes available for
 the `CountryCodePickerMode` property.
 
-| <img src="https://raw.githubusercontent.com/yudiz-solutions/CountryCodePickerPlus/main/screenshot/ss_dialog.png" width="240"/> |<img src="https://raw.githubusercontent.com/yudiz-solutions/CountryCodePickerPlus/development/screenshot/ss_dropdown.png" width="240"/>|<img src="https://raw.githubusercontent.com/yudiz-solutions/CountryCodePickerPlus/development/screenshot/ss_bottom_sheet.png" width="240"/>|
-|:----------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------------------:|
-|                                                  `'CountryCodePickerMode.dialog'`                                                  |                                                    `'CountryCodePickerMode.dropdown'`                                                     |                                                     `'CountryCodePickerMode.bottomSheet'`                                                     |
+| <img src="https://raw.githubusercontent.com/yudiz-solutions/CountryCodePickerPlus/main/screenshot/ss_dialog.png" width="240"/> | <img src="https://raw.githubusercontent.com/yudiz-solutions/CountryCodePickerPlus/development/screenshot/ss_dropdown.png" width="240"/> | <img src="https://raw.githubusercontent.com/yudiz-solutions/CountryCodePickerPlus/development/screenshot/ss_bottom_sheet.png" width="240"/> |
+| :----------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------: |
+|                                                `'CountryCodePickerMode.dialog'`                                                |                                                   `'CountryCodePickerMode.dropdown'`                                                    |                                                    `'CountryCodePickerMode.bottomSheet'`                                                    |
+
+|                    |     |
+| ------------------ | --- |
+| `EFlagType.circle` |     |
 
 ## Other Properties
 
 | Name                      | Type                      | Description                                                              |
-|---------------------------|---------------------------|--------------------------------------------------------------------------|
+| ------------------------- | ------------------------- | ------------------------------------------------------------------------ |
 | mode                      | CountryCodePickerMode     | The mode to display the country picker (dialog, dropdown, bottomSheet).  |
 | onChanged                 | ValueChanged<CountryCode> | callback invoked when the selection changes                              |
 | onInit                    | ValueChanged<CountryCode> | callback invoked during initialization of the widget                     |
@@ -127,45 +131,8 @@ Contributions of any kind are more than welcome! Feel free to fork and improve
 country_code_picker_plus
 in any way you want, make a pull request, or open an issue.
 
-## Contributors ✨
-
-Thanks goes to these wonderful people ✨✨    :
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tbody>
-    <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/YudizAndroidNareshP"><img src="https://avatars.githubusercontent.com/u/141625205?v=4?s=100" width="100px;" alt="YudizAndroidNaresh"/><br /><sub><b>YudizAndroidNaresh</b></sub></a><br /><a href="https://github.com/yudiz-solutions/CountryCodePickerPlus/commits?author=YudizAndroidNareshP" title="Code">💻</a> <a href="https://github.com/yudiz-solutions/CountryCodePickerPlus/commits?author=YudizAndroidNareshP" title="Documentation">📖</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
 This project follows the [all-contributors](https://all-contributors.js.org/) specification. Contributions of any kind welcome!
-
-## Getting Involved
-
-First of all, thank you for considering to get involved. You are a real superstar ⭐ and we ❤️ you!
 
 ### Reporting Bugs and Issues
 
 Use the configured [Github issue report template](https://github.com/yudiz-solutions/CountryCodePickerPlus/issues/new?assignees=&labels=&template=bug_report.md&title=) when reporting an issue. Make sure to clearly state your observations and expectations so we can understand your needs and troubleshoot effectively.
-
-### Discussions and Ideas
-
-We're happy to discuss and talk about ideas. Post your questions on [StackOverflow](https://stackoverflow.com/search?q=country+code+picker+plus).
-
----
-
-## Visitors Count 
-<img align="left" src = "https://profile-counter.glitch.me/CountryCodePickerPlus/count.svg" alt ="Loading">
-
-
-
-
