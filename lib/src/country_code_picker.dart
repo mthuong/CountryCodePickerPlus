@@ -221,29 +221,32 @@ class CountryCodePickerState extends State<CountryCodePicker> {
               // This is the widget that will be shown when you select an item.
               // Here custom text style, alignment and layout size can be applied
               // to selected item string.
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  if (widget.showFlag)
-                    Container(
-                      decoration: widget.flagDecoration,
-                      clipBehavior: widget.flagDecoration == null
-                          ? Clip.none
-                          : Clip.hardEdge,
-                      child: Image.asset(
-                        e.flagBy(widget.flagType),
-                        package: 'country_code_picker_plus',
-                        width: widget.flagWidth,
+              return Padding(
+                padding: widget.padding,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (widget.showFlag)
+                      Container(
+                        decoration: widget.flagDecoration,
+                        clipBehavior: widget.flagDecoration == null
+                            ? Clip.none
+                            : Clip.hardEdge,
+                        child: Image.asset(
+                          e.flagBy(widget.flagType),
+                          package: 'country_code_picker_plus',
+                          width: widget.flagWidth,
+                        ),
                       ),
-                    ),
-                  if (!widget.hideMainText)
-                    Text(
-                      e.toString(),
-                      style: widget.textStyle ??
-                          Theme.of(context).textTheme.labelLarge,
-                    ),
-                ],
+                    if (!widget.hideMainText)
+                      Text(
+                        e.toString(),
+                        style: widget.textStyle ??
+                            Theme.of(context).textTheme.labelLarge,
+                      ),
+                  ],
+                ),
               );
             }).toList();
           },
