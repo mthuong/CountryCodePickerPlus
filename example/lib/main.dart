@@ -88,7 +88,7 @@ class _ExampleState extends State<Example> {
                     children: [
                       CountryCodePicker(
                         alignLeft: true,
-                        // hideMainText: true,
+                        hideMainText: true,
                         mode: CountryCodePickerMode.dropdown,
                         onChanged: (country) {
                           _printCountryCode(country);

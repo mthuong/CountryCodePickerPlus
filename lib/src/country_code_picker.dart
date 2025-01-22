@@ -216,37 +216,64 @@ class CountryCodePickerState extends State<CountryCodePicker> {
               ),
           iconEnabledColor: widget.iconEnabledColor,
           iconDisabledColor: widget.iconDisabledColor,
+          selectedItemBuilder: (BuildContext context) {
+            return elements.map<Widget>((e) {
+              // This is the widget that will be shown when you select an item.
+              // Here custom text style, alignment and layout size can be applied
+              // to selected item string.
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (widget.showFlag)
+                    Container(
+                      margin: const EdgeInsets.only(right: 8.0),
+                      decoration: widget.flagDecoration,
+                      clipBehavior: widget.flagDecoration == null
+                          ? Clip.none
+                          : Clip.hardEdge,
+                      child: Image.asset(
+                        e.flagBy(widget.flagType),
+                        package: 'country_code_picker_plus',
+                        width: widget.flagWidth,
+                      ),
+                    ),
+                  if (!widget.hideMainText)
+                    Text(
+                      e.toString(),
+                      style: widget.textStyle ??
+                          Theme.of(context).textTheme.labelLarge,
+                    ),
+                ],
+              );
+            }).toList();
+          },
           items: elements
               .map((e) => DropdownMenuItem(
                     value: e,
-                    child: Padding(
-                      // padding: widget.padding,
-                      padding: EdgeInsets.zero,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          if (widget.showFlag)
-                            Container(
-                              margin: const EdgeInsets.only(right: 8.0),
-                              decoration: widget.flagDecoration,
-                              clipBehavior: widget.flagDecoration == null
-                                  ? Clip.none
-                                  : Clip.hardEdge,
-                              child: Image.asset(
-                                e.flagBy(widget.flagType),
-                                package: 'country_code_picker_plus',
-                                width: widget.flagWidth,
-                              ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        if (widget.showFlag)
+                          Container(
+                            margin: const EdgeInsets.only(right: 8.0),
+                            decoration: widget.flagDecoration,
+                            clipBehavior: widget.flagDecoration == null
+                                ? Clip.none
+                                : Clip.hardEdge,
+                            child: Image.asset(
+                              e.flagBy(widget.flagType),
+                              package: 'country_code_picker_plus',
+                              width: widget.flagWidth,
                             ),
-                          if (!widget.hideMainText)
-                            Text(
-                              e.toString(),
-                              style: widget.textStyle ??
-                                  Theme.of(context).textTheme.labelLarge,
-                            ),
-                        ],
-                      ),
+                          ),
+                        Text(
+                          e.toString(),
+                          style: widget.textStyle ??
+                              Theme.of(context).textTheme.labelLarge,
+                        ),
+                      ],
                     ),
                   ))
               .toList(),
