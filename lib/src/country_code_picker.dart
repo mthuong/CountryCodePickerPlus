@@ -204,17 +204,24 @@ class CountryCodePickerState extends State<CountryCodePicker> {
     if (widget.mode == CountryCodePickerMode.dropdown) {
       return DropdownButtonHideUnderline(
         child: DropdownButton<Country>(
-          iconSize: widget.showDropDownButton ? (widget.iconSize ?? 24.0) : 0.0,
+          iconSize: widget.showDropDownButton ? (widget.iconSize ?? 12.0) : 0.0,
           value: selectedItem,
           style: widget.textStyle ?? Theme.of(context).textTheme.labelLarge,
-          icon: widget.icon,
+          padding: EdgeInsets.zero,
+          icon: widget.icon ??
+              Icon(
+                Icons.arrow_drop_down,
+                color: Colors.grey,
+                size: widget.flagWidth,
+              ),
           iconEnabledColor: widget.iconEnabledColor,
           iconDisabledColor: widget.iconDisabledColor,
           items: elements
               .map((e) => DropdownMenuItem(
                     value: e,
                     child: Padding(
-                      padding: widget.padding,
+                      // padding: widget.padding,
+                      padding: EdgeInsets.zero,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         mainAxisSize: MainAxisSize.min,
@@ -232,11 +239,12 @@ class CountryCodePickerState extends State<CountryCodePicker> {
                                 width: widget.flagWidth,
                               ),
                             ),
-                          Text(
-                            e.toString(),
-                            style: widget.textStyle ??
-                                Theme.of(context).textTheme.labelLarge,
-                          ),
+                          if (!widget.hideMainText)
+                            Text(
+                              e.toString(),
+                              style: widget.textStyle ??
+                                  Theme.of(context).textTheme.labelLarge,
+                            ),
                         ],
                       ),
                     ),

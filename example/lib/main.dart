@@ -73,12 +73,25 @@ class _ExampleState extends State<Example> {
                 'TextField 2 (dropdown):',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
-              _buildTextField(
-                CountryCodePicker(
-                  mode: CountryCodePickerMode.dropdown,
-                  onChanged: (country) {
-                    _printCountryCode(country);
-                  },
+              TextField(
+                keyboardType: TextInputType.phone,
+                textInputAction: TextInputAction.done,
+                inputFormatters: [
+                  FilteringTextInputFormatter.digitsOnly,
+                  PhoneNumberFormatter(),
+                ],
+                textAlign: TextAlign.start,
+                textAlignVertical: TextAlignVertical.center,
+                decoration: InputDecoration(
+                  prefixIcon: CountryCodePicker(
+                    alignLeft: true,
+                    // hideMainText: true,
+                    mode: CountryCodePickerMode.dropdown,
+                    onChanged: (country) {
+                      _printCountryCode(country);
+                    },
+                  ),
+                  hintText: 'Enter phone number',
                 ),
               ),
               const SizedBox(height: 20),
@@ -273,7 +286,6 @@ class _ExampleState extends State<Example> {
                     border: Border.all(color: Colors.red, width: 2),
                     borderRadius: BorderRadius.circular(5),
                   ),
-
                   icon: const Icon(Icons.expand_more),
                   iconDisabledColor: Colors.grey,
                   iconEnabledColor: Colors.black,
