@@ -52,9 +52,9 @@ the `CountryCodePickerMode` property.
 | :----------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------: |
 |                                                `'CountryCodePickerMode.dialog'`                                                |                                                   `'CountryCodePickerMode.dropdown'`                                                    |                                                    `'CountryCodePickerMode.bottomSheet'`                                                    |
 
-|                    |     |
-| ------------------ | --- |
-| `EFlagType.circle` |     |
+|   <img src="https://github.com/user-attachments/assets/22fd56d5-b5dd-4425-9c82-1eb50cb5a67f" width="240"/>       |
+| ------------------ |
+| `EFlagType.circle` |
 
 ## Other Properties
 
@@ -72,6 +72,7 @@ the `CountryCodePickerMode` property.
 | showOnlyCountryWhenClosed | bool                      | if true it'll show only the country                                      |
 | alignLeft                 | bool                      | aligns the flag and the Text to the left                                 |
 | showFlag                  | bool                      | shows the flag everywhere                                                |
+| flagType                  | EFlagType                 | shows the circle flag or rectangle flag                                  |
 | showFlagMain              | bool                      | shows the flag only when closed                                          |
 | showFlagDialog            | bool                      | shows the flag only in dialog                                            |
 | flagWidth                 | double                    | the width of the flags                                                   |
