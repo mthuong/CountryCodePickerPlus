@@ -252,7 +252,9 @@ class CountryCodePickerState extends State<CountryCodePicker> {
               .toList(),
           onChanged: widget.enabled
               ? (Country? value) {
-                  selectedItem = value;
+                  setState(() {
+                    selectedItem = value;
+                  });
                   if (selectedItem != null) {
                     _publishSelection(selectedItem!);
                   }
