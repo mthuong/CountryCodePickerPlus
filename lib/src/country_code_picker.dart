@@ -54,6 +54,7 @@ class CountryCodePicker extends StatefulWidget {
 
   /// shows the flag
   final bool showFlag;
+  final EFlagType flagType;
 
   final bool hideMainText;
 
@@ -121,6 +122,7 @@ class CountryCodePicker extends StatefulWidget {
     this.showOnlyCountryWhenClosed = false,
     this.alignLeft = false,
     this.showFlag = true,
+    this.flagType = EFlagType.circle,
     this.showFlagDialog,
     this.hideMainText = false,
     this.showFlagMain,
@@ -225,7 +227,7 @@ class CountryCodePickerState extends State<CountryCodePicker> {
                                   ? Clip.none
                                   : Clip.hardEdge,
                               child: Image.asset(
-                                e.flagUri,
+                                e.flagBy(widget.flagType),
                                 package: 'country_code_picker_plus',
                                 width: widget.flagWidth,
                               ),
@@ -281,7 +283,7 @@ class CountryCodePickerState extends State<CountryCodePicker> {
                         ? const EdgeInsets.only(right: 16.0, left: 8.0)
                         : const EdgeInsets.only(right: 16.0),
                     child: Image.asset(
-                      selectedItem!.flagUri,
+                      selectedItem!.flagBy(widget.flagType),
                       package: 'country_code_picker_plus',
                       width: widget.flagWidth,
                     ),

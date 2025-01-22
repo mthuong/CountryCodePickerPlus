@@ -12,6 +12,7 @@ class CountryCodePickerDialog extends StatefulWidget {
   final BoxDecoration? boxDecoration;
   final WidgetBuilder? emptySearchBuilder;
   final bool? showFlag;
+  final EFlagType flagType;
   final double flagWidth;
   final Decoration? flagDecoration;
   final Size? size;
@@ -54,6 +55,7 @@ class CountryCodePickerDialog extends StatefulWidget {
     this.dialogItemPadding =
         const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
     this.searchPadding = const EdgeInsets.symmetric(horizontal: 24),
+    this.flagType = EFlagType.circle,
   }) : searchDecoration = searchDecoration.prefixIcon == null
             ? searchDecoration.copyWith(prefixIcon: const Icon(Icons.search))
             : searchDecoration;
@@ -160,7 +162,7 @@ class _CountryCodePickerDialogState extends State<CountryCodePickerDialog> {
                 clipBehavior:
                     widget.flagDecoration == null ? Clip.none : Clip.hardEdge,
                 child: Image.asset(
-                  e.flagUri,
+                  e.flagBy(widget.flagType),
                   package: 'country_code_picker_plus',
                   width: widget.flagWidth,
                 ),
