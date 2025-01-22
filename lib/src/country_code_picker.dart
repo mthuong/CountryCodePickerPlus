@@ -107,6 +107,8 @@ class CountryCodePicker extends StatefulWidget {
   final ShapeBorder? shape;
   final AlignmentGeometry? alignment;
 
+  final double menuWidth;
+
   const CountryCodePicker({
     this.onChanged,
     this.onInit,
@@ -161,6 +163,7 @@ class CountryCodePicker extends StatefulWidget {
     this.clipBehavior = Clip.none,
     this.shape,
     this.alignment,
+    this.menuWidth = 135,
   });
 
   @override
@@ -216,6 +219,7 @@ class CountryCodePickerState extends State<CountryCodePicker> {
               ),
           iconEnabledColor: widget.iconEnabledColor,
           iconDisabledColor: widget.iconDisabledColor,
+          menuWidth: widget.menuWidth,
           selectedItemBuilder: (BuildContext context) {
             return elements.map<Widget>((e) {
               // This is the widget that will be shown when you select an item.
