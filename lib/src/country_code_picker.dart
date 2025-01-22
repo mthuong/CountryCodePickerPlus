@@ -250,29 +250,32 @@ class CountryCodePickerState extends State<CountryCodePicker> {
           items: elements
               .map((e) => DropdownMenuItem(
                     value: e,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        if (widget.showFlag)
-                          Container(
-                            margin: const EdgeInsets.only(right: 8.0),
-                            decoration: widget.flagDecoration,
-                            clipBehavior: widget.flagDecoration == null
-                                ? Clip.none
-                                : Clip.hardEdge,
-                            child: Image.asset(
-                              e.flagBy(widget.flagType),
-                              package: 'country_code_picker_plus',
-                              width: widget.flagWidth,
+                    child: Padding(
+                      padding: widget.padding,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          if (widget.showFlag)
+                            Container(
+                              margin: const EdgeInsets.only(right: 8.0),
+                              decoration: widget.flagDecoration,
+                              clipBehavior: widget.flagDecoration == null
+                                  ? Clip.none
+                                  : Clip.hardEdge,
+                              child: Image.asset(
+                                e.flagBy(widget.flagType),
+                                package: 'country_code_picker_plus',
+                                width: widget.flagWidth,
+                              ),
                             ),
+                          Text(
+                            e.toString(),
+                            style: widget.textStyle ??
+                                Theme.of(context).textTheme.labelLarge,
                           ),
-                        Text(
-                          e.toString(),
-                          style: widget.textStyle ??
-                              Theme.of(context).textTheme.labelLarge,
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ))
               .toList(),
