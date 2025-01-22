@@ -163,7 +163,7 @@ class CountryCodePicker extends StatefulWidget {
     this.clipBehavior = Clip.none,
     this.shape,
     this.alignment,
-    this.menuWidth = 135,
+    this.menuWidth = 140,
   });
 
   @override
@@ -233,6 +233,7 @@ class CountryCodePickerState extends State<CountryCodePicker> {
                   children: [
                     if (widget.showFlag)
                       Container(
+                        margin: const EdgeInsets.only(right: 8.0),
                         decoration: widget.flagDecoration,
                         clipBehavior: widget.flagDecoration == null
                             ? Clip.none
