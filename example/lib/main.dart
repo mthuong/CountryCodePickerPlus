@@ -53,7 +53,7 @@ class _ExampleState extends State<Example> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               const Text(
-                'TextField 2 (dropdown):',
+                'Country picker only',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
               Padding(
