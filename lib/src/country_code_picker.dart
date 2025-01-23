@@ -19,7 +19,6 @@ class CountryCodePicker extends StatefulWidget {
   final TextStyle? searchStyle;
   final TextStyle? dialogTextStyle;
   final WidgetBuilder? emptySearchBuilder;
-  final Function(Country?)? builder;
   final bool enabled;
   final TextOverflow textOverflow;
   final Icon closeIcon;
@@ -109,6 +108,9 @@ class CountryCodePicker extends StatefulWidget {
 
   final double menuWidth;
 
+  final Function(Country e)? selectedItemBuilder;
+  final DropdownMenuItem<Country> Function(Country e)? itemBuilder;
+
   const CountryCodePicker({
     this.onChanged,
     this.onInit,
@@ -129,7 +131,6 @@ class CountryCodePicker extends StatefulWidget {
     this.hideMainText = false,
     this.showFlagMain,
     this.flagDecoration,
-    this.builder,
     this.flagWidth = 32.0,
     this.enabled = true,
     this.textOverflow = TextOverflow.ellipsis,
@@ -164,6 +165,8 @@ class CountryCodePicker extends StatefulWidget {
     this.shape,
     this.alignment,
     this.menuWidth = 140,
+    this.selectedItemBuilder,
+    this.itemBuilder,
   });
 
   @override
@@ -222,6 +225,9 @@ class CountryCodePickerState extends State<CountryCodePicker> {
           menuWidth: widget.menuWidth,
           selectedItemBuilder: (BuildContext context) {
             return elements.map<Widget>((e) {
+              if (widget.selectedItemBuilder != null) {
+                return widget.selectedItemBuilder?.call(e);
+              }
               // This is the widget that will be shown when you select an item.
               // Here custom text style, alignment and layout size can be applied
               // to selected item string.
@@ -255,38 +261,44 @@ class CountryCodePickerState extends State<CountryCodePicker> {
               );
             }).toList();
           },
-          items: elements
-              .map((e) => DropdownMenuItem(
-                    value: e,
-                    child: Padding(
-                      padding: widget.padding,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          if (widget.showFlag)
-                            Container(
-                              margin: const EdgeInsets.only(right: 8.0),
-                              decoration: widget.flagDecoration,
-                              clipBehavior: widget.flagDecoration == null
-                                  ? Clip.none
-                                  : Clip.hardEdge,
-                              child: Image.asset(
-                                e.flagBy(widget.flagType),
-                                package: 'country_code_picker_plus',
-                                width: widget.flagWidth,
-                              ),
-                            ),
-                          Text(
-                            e.toString(),
-                            style: widget.textStyle ??
-                                Theme.of(context).textTheme.labelLarge,
+          items: elements.map<DropdownMenuItem<Country>>(
+            (e) {
+              if (widget.itemBuilder != null) {
+                return widget.itemBuilder!.call(e);
+              }
+
+              return DropdownMenuItem(
+                value: e,
+                child: Padding(
+                  padding: widget.padding,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      if (widget.showFlag)
+                        Container(
+                          margin: const EdgeInsets.only(right: 8.0),
+                          decoration: widget.flagDecoration,
+                          clipBehavior: widget.flagDecoration == null
+                              ? Clip.none
+                              : Clip.hardEdge,
+                          child: Image.asset(
+                            e.flagBy(widget.flagType),
+                            package: 'country_code_picker_plus',
+                            width: widget.flagWidth,
                           ),
-                        ],
+                        ),
+                      Text(
+                        e.toString(),
+                        style: widget.textStyle ??
+                            Theme.of(context).textTheme.labelLarge,
                       ),
-                    ),
-                  ))
-              .toList(),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ).toList(),
           onChanged: widget.enabled
               ? (Country? value) {
                   setState(() {
@@ -301,10 +313,12 @@ class CountryCodePickerState extends State<CountryCodePicker> {
       );
     }
 
-    if (widget.builder != null) {
+    if (widget.selectedItemBuilder != null) {
       internalWidget = InkWell(
         onTap: widget.enabled ? showCountryCodePickerDialog : null,
-        child: widget.builder!(selectedItem),
+        child: selectedItem != null
+            ? widget.selectedItemBuilder!(selectedItem!)
+            : const SizedBox.shrink(),
       );
     } else {
       internalWidget = InkWell(

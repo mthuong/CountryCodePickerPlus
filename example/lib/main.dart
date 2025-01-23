@@ -53,13 +53,49 @@ class _ExampleState extends State<Example> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               const Text(
+                'TextField 2 (dropdown):',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: CountryCodePicker(
+                  alignLeft: true,
+                  hideMainText: true,
+                  mode: CountryCodePickerMode.dialog,
+                  onChanged: (country) {
+                    _printCountryCode(country);
+                  },
+                  initialSelection: 'GB',
+                  selectedItemBuilder: (e) {
+                    return Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            e.name,
+                            style: Theme.of(context).textTheme.labelLarge,
+                            overflow: TextOverflow.clip,
+                            softWrap: true,
+                          ),
+                        ),
+                        const Icon(
+                          Icons.arrow_drop_down_circle,
+                          color: Colors.grey,
+                          size: 32,
+                        )
+                      ],
+                    );
+                  },
+                  showCountryOnly: true,
+                ),
+              ),
+              const Text(
                 'TextField 1 (default):',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
               _buildTextField(CountryCodePicker(
                 onChanged: (country) {
                   setState(() {
-                    _selectedCountryCode1 = country.dialCode ?? '';
+                    _selectedCountryCode1 = country.dialCode;
                   });
                   _printCountryCode(country);
                 },
@@ -227,7 +263,7 @@ class _ExampleState extends State<Example> {
                     _printCountryCode(country);
                   },
                   initialSelection: 'JP',
-                  favorite: ['+81'],
+                  favorite: const ['+81'],
                 ),
               ),
               const SizedBox(height: 20),
