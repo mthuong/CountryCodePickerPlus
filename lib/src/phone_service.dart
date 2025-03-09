@@ -1,11 +1,30 @@
 import 'dart:convert';
 
+import 'package:collection/collection.dart';
+import 'package:country_code_picker_plus/src/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:country_code_picker_plus/src/country.dart';
 import 'package:flutter/services.dart';
 import 'package:libphonenumber_plugin/libphonenumber_plugin.dart';
 
 class PhoneService {
+  late final List<Country> countries;
+
+  PhoneService() {
+    List<Country> elements =
+        countryCodes.map((json) => Country.fromJson(json)).toList();
+    countries = elements;
+  }
+
+  Country? countryBy({required String dialCode}) {
+    return countries
+        .firstWhereOrNull((element) => element.dialCode.contains(dialCode));
+  }
+
+  Country? countryByCode({required String code}) {
+    return countries.firstWhereOrNull((element) => element.code == code);
+  }
+
   static List<Country> getPotentialCountries(
       String number, List<Country> countries) {
     List<Country> result = [];
