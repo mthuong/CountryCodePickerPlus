@@ -13,8 +13,10 @@ dependencies:
     sdk: flutter
 
   libphonenumber_plugin:
-  js: ^0.7.2
   collection: ^1.18.0
+
+dependency_overrides: 
+  js: ^0.7.2
 
 dev_dependencies:
   flutter_test:
