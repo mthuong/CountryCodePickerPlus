@@ -16,6 +16,7 @@ dependencies:
   libphonenumber_plugin:
     git:
       url: https://github.com/mthuong/plugin_libphonenumber.git
+      path: libphonenumber_plugin
       ref: main
   collection: ^1.18.0
 
