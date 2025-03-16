@@ -3,6 +3,7 @@ description: "CountryCodePickerPlus is a Flutter package that simplifies the pro
 version: 0.1.0
 homepage: https://github.com/mthuong/CountryCodePickerPlus
 issue_tracker: https://github.com/mthuong/CountryCodePickerPlus/issues
+publish_to: none
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
@@ -13,6 +14,9 @@ dependencies:
     sdk: flutter
 
   libphonenumber_plugin:
+    git:
+      url: https://github.com/mthuong/plugin_libphonenumber.git
+      ref: main
   collection: ^1.18.0
 
 dependency_overrides: 
